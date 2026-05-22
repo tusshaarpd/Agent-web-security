@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
   ResponsiveContainer,
   ScatterChart,
@@ -59,8 +58,8 @@ export function RiskMatrix() {
           stroke="rgba(148,163,184,0.7)"
           fontSize={11}
           domain={[0, 5]}
-          tickFormatter={(v) =>
-            ["", "Info", "Low", "Med", "High", "Crit"][v as number] || ""
+          tickFormatter={(v: number) =>
+            ["", "Info", "Low", "Med", "High", "Crit"][v] || ""
           }
         />
         <ZAxis dataKey="z" range={[120, 400]} />
@@ -73,11 +72,14 @@ export function RiskMatrix() {
             color: "white",
             fontSize: 12
           }}
-          formatter={(v: number, name: string) =>
-            name === "Severity"
-              ? ["—", "Info", "Low", "Med", "High", "Crit"][v]
-              : v
-          }
+          formatter={((value: number | string, name: string) => {
+            if (name === "Severity" && typeof value === "number") {
+              return String(
+                ["—", "Info", "Low", "Med", "High", "Crit"][value] ?? value
+              );
+            }
+            return String(value);
+          }) as never}
           labelFormatter={() => ""}
         />
         <Scatter data={data}>

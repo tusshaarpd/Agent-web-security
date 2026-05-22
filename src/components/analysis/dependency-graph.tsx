@@ -6,14 +6,23 @@ import { motion } from "framer-motion";
  * Lightweight, hand-drawn dependency graph showing how an agent's
  * tools, retrievers, and downstream services are wired.
  */
-const NODES = [
+interface GraphNode {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+  tone: string;
+  root?: boolean;
+}
+
+const NODES: GraphNode[] = [
   { id: "agent", label: "Atlas Agent", x: 50, y: 50, tone: "violet", root: true },
   { id: "planner", label: "Planner LLM", x: 22, y: 28, tone: "fuchsia" },
   { id: "rag", label: "Compliance RAG", x: 22, y: 72, tone: "cyan" },
   { id: "stripe", label: "Stripe MCP", x: 78, y: 22, tone: "amber" },
   { id: "github", label: "GitHub MCP", x: 78, y: 50, tone: "emerald" },
   { id: "egress", label: "Egress Proxy", x: 78, y: 78, tone: "rose" }
-] as const;
+];
 
 const EDGES = [
   ["agent", "planner"],
