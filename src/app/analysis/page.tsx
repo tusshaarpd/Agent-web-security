@@ -1,3 +1,5 @@
+"use client";
+
 import { Download, Filter, Sparkles } from "lucide-react";
 import { AppShell } from "@/components/shell/app-shell";
 import { SectionHeader } from "@/components/dashboard/section-header";

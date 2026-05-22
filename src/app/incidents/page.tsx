@@ -1,3 +1,6 @@
+"use client";
+
+import type { ReactNode } from "react";
 import {
   Activity,
   AlertOctagon,
@@ -26,7 +29,7 @@ const STATUS_TONE: Record<string, string> = {
   resolved: "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
 };
 
-const STATUS_ICON: Record<string, React.ReactNode> = {
+const STATUS_ICON: Record<string, ReactNode> = {
   active: <AlertOctagon className="h-3.5 w-3.5" />,
   investigating: <Activity className="h-3.5 w-3.5" />,
   resolved: <CheckCircle2 className="h-3.5 w-3.5" />

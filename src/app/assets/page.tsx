@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Plus, SlidersHorizontal } from "lucide-react";
 import { AppShell } from "@/components/shell/app-shell";
